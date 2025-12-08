@@ -21,9 +21,9 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- Insert default admin account
 INSERT INTO users (name, email, password, role, blood_type, age, photo) VALUES
-('Admin', 'admin@bloodlink.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 'O+', 35, 'admin.jpg'),
-('John Donor', 'john@bloodlink.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'user', 'A-', 28, 'john.jpg'),
-('Jane Smith', 'jane@bloodlink.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'user', 'AB+', 42, 'jane.jpg');
+('Admin', 'admin@bloodlink.com', 'password123', 'admin', 'AB+', 35, 'default-avatar.jpg'),
+('Tasneem', 'tasneem@bloodlink.com', 'password123', 'user', 'A+', 21, 'default-avatar.jpg'),
+('Heba', 'heba@bloodlink.com', 'password123', 'user', 'O+', 21, 'default-avatar.jpg');
 
 -- Note: Default password for all users is 'password123'
 -- Password hash generated using: password_hash('password123', PASSWORD_DEFAULT)
