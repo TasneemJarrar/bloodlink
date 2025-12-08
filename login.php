@@ -18,10 +18,17 @@ $error = "";
 
 // Handle login form submission
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'] ?? '';
-    $password = $_POST['password'] ?? '';
+    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-    if(!empty($email) && !empty($password)) {
+    // Basic server-side validation
+    if ($email === '' || $password === '') {
+        $error = "Please fill in all fields!";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 255) {
+        $error = "Please enter a valid email address.";
+    } elseif (strlen($password) < 6 || strlen($password) > 255) {
+        $error = "Please enter a valid password.";
+    } else {
         $database = new Database();
         $db = $database->getConnection();
         $user = new User($db);
@@ -44,8 +51,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             $error = "Invalid email or password!";
         }
-    } else {
-        $error = "Please fill in all fields!";
     }
 }
 ?>

@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- Insert default admin account
 INSERT INTO users (name, email, password, role, blood_type, age, photo) VALUES
-('Dr. Sarah Admin', 'admin@bloodlink.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 'O+', 35, 'admin.jpg'),
+('Admin', 'admin@bloodlink.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', 'O+', 35, 'admin.jpg'),
 ('John Donor', 'john@bloodlink.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'user', 'A-', 28, 'john.jpg'),
 ('Jane Smith', 'jane@bloodlink.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'user', 'AB+', 42, 'jane.jpg');
 
