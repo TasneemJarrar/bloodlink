@@ -71,7 +71,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e1e1e 0%, #3c3c3c 100%);
+
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -159,9 +160,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </form>
 
                 <div class="demo-credentials">
-                    <div class="text-center mb-2">
-                        <strong><i class="fas fa-info-circle me-2"></i>Demo Credentials</strong>
-                    </div>
                     <div class="row">
                         <div class="col-6">
                             <small><strong>Admin:</strong></small>
@@ -170,7 +168,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                         <div class="col-6">
                             <small><strong>User:</strong></small>
-                            <small>john@bloodlink.com</small>
+                            <small>tasneem@bloodlink.com</small>
                             <small>password123</small>
                         </div>
                     </div>

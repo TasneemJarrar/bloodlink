@@ -8,7 +8,7 @@ class Database {
     private $db_name = "bloodlink_db";
     private $username = "root";
     private $password = "";
-    private $conn;
+    public $conn;
 
     /**
      * Get database connection
@@ -18,16 +18,26 @@ class Database {
         $this->conn = null;
 
         try {
-            $dsn = "mysql:host={$this->host};dbname={$this->db_name};charset=utf8mb4";
-            $options = [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false,
-            ];
-
-            $this->conn = new PDO($dsn, $this->username, $this->password, $options);
-        } catch(PDOException $e) {
-            echo "Connection Error: " . $e->getMessage();
+            $this->conn = new PDO(
+                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                $this->username,
+                $this->password
+            );
+            
+            // Set the PDO error mode to exception
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            // Set charset to UTF8 (important for Arabic text)
+            $this->conn->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES utf8");
+            
+            // ✅ Remove echo - connection successful
+            
+        } catch (PDOException $e) {
+            // ✅ Log error securely instead of displaying it
+            error_log("Database Connection Error: " . $e->getMessage());
+            
+            // ✅ Show generic message to users
+            die("Database connection error. Please contact system administrator.");
         }
 
         return $this->conn;

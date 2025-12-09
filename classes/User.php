@@ -35,13 +35,13 @@ class User {
 
         $stmt = $this->conn->prepare($query);
 
-        // Hash password
-        $hashed_password = password_hash($this->password, PASSWORD_DEFAULT);
-
+        // ⚠️ WARNING: Storing password without hashing is NOT SECURE!
+        // For production, always use: password_hash($this->password, PASSWORD_DEFAULT)
+        
         // Bind parameters
         $stmt->bindParam(":name", $this->name);
         $stmt->bindParam(":email", $this->email);
-        $stmt->bindParam(":password", $hashed_password);
+        $stmt->bindParam(":password", $this->password); // Plain text password
         $stmt->bindParam(":role", $this->role);
         $stmt->bindParam(":blood_type", $this->blood_type);
         $stmt->bindParam(":age", $this->age);
@@ -133,14 +133,14 @@ class User {
     }
 
     /**
-     * Update password
+     * Update password (Plain text - NOT SECURE!)
      */
     public function updatePassword($new_password) {
         $query = "UPDATE " . $this->table . " SET password = :password WHERE id = :id";
         $stmt = $this->conn->prepare($query);
         
-        $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-        $stmt->bindParam(":password", $hashed_password);
+        // ⚠️ Storing plain text password (NOT RECOMMENDED!)
+        $stmt->bindParam(":password", $new_password);
         $stmt->bindParam(":id", $this->id);
 
         if($stmt->execute()) {
@@ -150,7 +150,9 @@ class User {
     }
 
     /**
-     * Login - Authenticate user
+     * Login - Authenticate user (WITHOUT PASSWORD HASHING)
+     * ⚠️ WARNING: This method compares passwords as plain text
+     * This is NOT SECURE and should only be used for development/testing
      */
     public function login($email, $password) {
         $query = "SELECT * FROM " . $this->table . " WHERE email = :email LIMIT 1";
@@ -160,7 +162,8 @@ class User {
 
         $row = $stmt->fetch();
         
-        if($row && password_verify($password, $row['password'])) {
+        // ✅ Changed: Direct password comparison instead of password_verify()
+        if($row && $row['password'] === $password) {
             $this->id = $row['id'];
             $this->name = $row['name'];
             $this->email = $row['email'];

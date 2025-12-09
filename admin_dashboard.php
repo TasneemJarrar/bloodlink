@@ -81,26 +81,49 @@ unset($_SESSION['success'], $_SESSION['error']);
             object-fit: cover;
         }
         .badge-admin {
-            background-color: #8b5cf6;
+            background-color: rgba(138, 92, 246, 0.22);
+            color: #7e51e8ff;
+            border-radius: 24px;
         }
         .badge-user {
-            background-color: #10b981;
+            background-color: rgba(16, 185, 129, 0.22);
+            color : #078d60ff;
+            border-radius: 24px;
         }
         .blood-type-badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background-color: #fee2e2;
             color: #dc2626;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+        }
+        .btn_edit i{
+            color: #4f46e5;
+        }
+        .btn_edit:hover{
+            background: rgba(78, 70, 229, 0.18);
+        }
+        .update_password_btn i{
+          color: #f59e0b;
+        }
+        .update_password_btn:hover{
+          background: rgba(245, 159, 11, 0.18);
+        }
+        .delete_user_btn i{
+          color: #f50b0bff;
+        }
+        .delete_user_btn:hover{
+          background: rgba(245, 11, 11, 0.18);
         }
         .btn-action {
             padding: 5px 10px;
             margin: 0 2px;
+            border-radius: 50%;
         }
     </style>
 </head>
@@ -224,18 +247,18 @@ unset($_SESSION['success'], $_SESSION['error']);
                                             </td>
                                             <td class="text-center">
                                                 <a href="edit_user.php?id=<?php echo $u['id']; ?>" 
-                                                   class="btn btn-sm btn-primary btn-action" 
+                                                   class="btn btn-sm btn-action btn_edit" 
                                                    title="Edit">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                                 <a href="update_password.php?id=<?php echo $u['id']; ?>" 
-                                                   class="btn btn-sm btn-warning btn-action" 
+                                                   class="btn btn-sm update_password_btn btn-action" 
                                                    title="Change Password">
                                                     <i class="fas fa-key"></i>
                                                 </a>
                                                 <?php if($u['id'] != $_SESSION['user_id']): ?>
                                                     <a href="delete_user.php?id=<?php echo $u['id']; ?>" 
-                                                       class="btn btn-sm btn-danger btn-action" 
+                                                       class="btn btn-sm delete_user_btn btn-action" 
                                                        title="Delete"
                                                        onclick="return confirm('Are you sure you want to delete this user?')">
                                                         <i class="fas fa-trash"></i>

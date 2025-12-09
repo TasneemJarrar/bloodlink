@@ -196,10 +196,7 @@ if(isset($_SESSION['user_id'])) {
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
-                    <div class="droplet-icon">
-                        <i class="fas fa-droplet"></i>
-                    </div>
-                    <h1 class="hero-title">Save Lives<br>Donate Blood</h1>
+                    <h1 class="hero-title mt-5">Save Lives<br>Donate Blood</h1>
                     <p class="hero-subtitle">
                         Modern blood donation management system for organizations and donors
                     </p>
@@ -353,19 +350,6 @@ if(isset($_SESSION['user_id'])) {
             </a>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="mb-0">
-                <i class="fas fa-droplet me-2"></i>
-                <strong>BloodLink</strong> - Blood Donation Management System © 2024
-            </p>
-            <p class="mt-2 mb-0 text-muted">
-                <small>Built with PHP, MySQL, Bootstrap & jQuery</small>
-            </p>
-        </div>
-    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
