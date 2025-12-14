@@ -47,54 +47,7 @@ if($user->last_donation_date) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-        }
-        .navbar {
-            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .profile-header {
-            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-            height: 200px;
-            border-radius: 15px 15px 0 0;
-        }
-        .profile-avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid white;
-            object-fit: cover;
-            margin-top: -75px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        .info-card {
-            background: #f8f9fa;
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid #e9ecef;
-            height: 100%;
-        }
-        .info-card i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        .info-card h3 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 0;
-        }
-        .blood-type-display {
-            color: #dc2626;
-        }
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/user_dashboard.css">
 </head>
 <body>
     <!-- Navigation -->

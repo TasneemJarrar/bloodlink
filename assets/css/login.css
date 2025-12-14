@@ -1,0 +1,55 @@
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #1e1e1e 0%, #3c3c3c 100%);
+
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  max-width: 450px;
+  width: 100%;
+}
+.login-header {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  padding: 40px 30px;
+  text-align: center;
+  color: white;
+}
+.login-header i {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+.login-body {
+  padding: 40px 30px;
+}
+.form-control:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 0.2rem rgba(220, 38, 38, 0.25);
+}
+.btn-login {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  border: none;
+  padding: 12px;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(220, 38, 38, 0.3);
+}
+.demo-credentials {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 20px;
+}
+.demo-credentials small {
+  display: block;
+  margin: 5px 0;
+}

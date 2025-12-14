@@ -74,27 +74,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-        }
-        .navbar {
-            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-        }
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        .preview-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #e9ecef;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/edit_profile.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">

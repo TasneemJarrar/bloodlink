@@ -60,26 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
-        }
-        .navbar {
-            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-        }
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        .user-info {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/update_password.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -97,7 +78,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="row">
             <div class="col-md-6 mx-auto">
                 <div class="card">
-                    <div class="card-header bg-warning text-dark">
+                    <div class="card-header bg-yellow text-dark">
                         <h5 class="mb-0"><i class="fas fa-key me-2"></i>Update Password</h5>
                     </div>
                     <div class="card-body">
@@ -136,7 +117,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
 
                             <div class="d-flex gap-2">
-                                <button type="submit" class="btn btn-warning">
+                                <button type="submit" class="btn update_password_btn">
                                     <i class="fas fa-save me-2"></i>Update Password
                                 </button>
                                 <a href="admin_dashboard.php" class="btn btn-secondary">
