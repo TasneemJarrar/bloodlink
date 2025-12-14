@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// Check if user is logged in
 if(!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -50,7 +48,7 @@ if($user->last_donation_date) {
     <link rel="stylesheet" href="./assets/css/user_dashboard.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="user_dashboard.php">
@@ -69,7 +67,6 @@ if($user->last_donation_date) {
         </div>
     </nav>
 
-    <!-- Main Content -->
     <div class="container mt-4">
         <!-- Profile Card -->
         <div class="card mb-4">
@@ -86,7 +83,7 @@ if($user->last_donation_date) {
             </div>
         </div>
 
-        <!-- Info Cards Row -->
+        <!-- info cards row -->
         <div class="row mb-4">
             <div class="col-md-4 mb-3">
                 <div class="info-card text-center">

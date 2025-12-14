@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// Check if user is admin
 if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     header("Location: login.php");
     exit();
@@ -17,7 +15,6 @@ $user = new User($db);
 $success = "";
 $error = "";
 
-// Handle form submission
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user->name = $_POST['name'] ?? '';
     $user->email = $_POST['email'] ?? '';
@@ -27,7 +24,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user->age = $_POST['age'] ?? 0;
     $user->last_donation_date = $_POST['last_donation_date'] ?? null;
     
-    // Handle file upload
     $photo_name = 'default-avatar.jpg';
     if(isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
         $allowed = ['jpg', 'jpeg', 'png', 'gif'];
@@ -45,10 +41,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error = "Only JPG, JPEG, PNG & GIF files are allowed!";
         }
     }
-    
     $user->photo = $photo_name;
     
-    // Validate and create user
     if(empty($error)) {
         if($user->emailExists($user->email)) {
             $error = "Email already exists!";
@@ -130,7 +124,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <?php endif; ?>
 
                         <form method="POST" action="" enctype="multipart/form-data">
-                            <!-- Photo Upload -->
                             <div class="text-center mb-4">
                                 <img src="uploads/default-avatar.jpg" id="photoPreview" class="preview-image mb-3" alt="Preview">
                                 <div>
@@ -210,7 +203,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Preview image before upload
         $('#photo').change(function() {
             const file = this.files[0];
             if (file) {

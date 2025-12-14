@@ -1,11 +1,5 @@
 <?php
-/**
- * BloodLink - Blood Donation Management System
- * Entry Point / Landing Page
- */
 session_start();
-
-// If user is already logged in, redirect to appropriate dashboard
 if(isset($_SESSION['user_id'])) {
     if($_SESSION['role'] == 'admin') {
         header("Location: admin_dashboard.php");
@@ -29,7 +23,7 @@ if(isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark position-absolute w-100" style="z-index: 1000;">
         <div class="container">
             <a class="navbar-brand fw-bold fs-4" href="index.php">
@@ -46,7 +40,7 @@ if(isset($_SESSION['user_id'])) {
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- hero section -->
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
@@ -71,7 +65,7 @@ if(isset($_SESSION['user_id'])) {
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- features section -->
     <section class="features-section" id="features">
         <div class="container">
             <div class="text-center mb-5">
@@ -155,7 +149,7 @@ if(isset($_SESSION['user_id'])) {
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- stats section -->
     <section class="stats-section">
         <div class="container">
             <div class="row">
@@ -164,7 +158,7 @@ if(isset($_SESSION['user_id'])) {
                         <div class="stat-number">
                             <i class="fas fa-droplet"></i>
                         </div>
-                        <div class="stat-label">8 Blood Types</div>
+                        <p class="stat-label">8 Blood Types</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4 mb-md-0">
@@ -172,7 +166,7 @@ if(isset($_SESSION['user_id'])) {
                         <div class="stat-number">
                             <i class="fas fa-users"></i>
                         </div>
-                        <div class="stat-label">Multiple Users</div>
+                        <p class="stat-label">Multiple Users</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
@@ -180,7 +174,7 @@ if(isset($_SESSION['user_id'])) {
                         <div class="stat-number">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <div class="stat-label">Secure System</div>
+                        <p class="stat-label">Secure System</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
@@ -188,14 +182,14 @@ if(isset($_SESSION['user_id'])) {
                         <div class="stat-number">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <div class="stat-label">Fast & Easy</div>
+                        <p class="stat-label">Fast & Easy</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!--login section -->
     <section class="py-5 bg-white">
         <div class="container text-center">
             <h2 class="display-5 fw-bold mb-4">Ready to Get Started?</h2>
@@ -209,15 +203,14 @@ if(isset($_SESSION['user_id'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Smooth scrolling for anchor links
         $(document).ready(function() {
             $('a[href^="#"]').on('click', function(e) {
                 e.preventDefault();
                 var target = $(this.getAttribute('href'));
                 if(target.length) {
                     $('html, body').animate({
-                        scrollTop: target.offset().top - 80
-                    }, 800);
+                        scrollTop: target.offset().top - 50
+                    }, 300);
                 }
             });
         });

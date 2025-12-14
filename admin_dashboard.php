@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// Check if user is logged in and is admin
 if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     header("Location: login.php");
     exit();
@@ -14,7 +12,6 @@ $database = new Database();
 $db = $database->getConnection();
 $user = new User($db);
 
-// Handle search
 $search_keyword = $_GET['search'] ?? '';
 if(!empty($search_keyword)) {
     $stmt = $user->search($search_keyword);
@@ -24,7 +21,6 @@ if(!empty($search_keyword)) {
 
 $users = $stmt->fetchAll();
 
-// Get session messages
 $success_msg = $_SESSION['success'] ?? '';
 $error_msg = $_SESSION['error'] ?? '';
 unset($_SESSION['success'], $_SESSION['error']);
@@ -42,9 +38,10 @@ unset($_SESSION['success'], $_SESSION['error']);
     
     <link rel="stylesheet" href="./assets/css/admin_dashboard.css">
     
+    <link rel="shortcut icon" href="./uploads/default-avatar.jpg" type="image/x-icon">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="admin_dashboard.php">
@@ -64,10 +61,9 @@ unset($_SESSION['success'], $_SESSION['error']);
         </div>
     </nav>
 
-    <!-- Main Content -->
     <div class="container-fluid main-content">
         <div class="container">
-            <!-- Session Messages -->
+            <!-- session messages -->
             <?php if(!empty($success_msg)): ?>
                 <div class="alert alert-success alert-dismissible fade show">
                     <i class="fas fa-check-circle me-2"></i><?php echo $success_msg; ?>
@@ -82,7 +78,7 @@ unset($_SESSION['success'], $_SESSION['error']);
                 </div>
             <?php endif; ?>
             
-            <!-- Header -->
+            <!-- header -->
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <h2 class="mb-1"><i class="fas fa-tachometer-alt me-2"></i>Admin Dashboard</h2>

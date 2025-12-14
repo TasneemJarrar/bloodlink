@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// Check if user is logged in
 if(!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -17,14 +15,12 @@ $user = new User($db);
 $success = "";
 $error = "";
 
-// Get current user data
 $user->id = $_SESSION['user_id'];
 if(!$user->readOne()) {
     header("Location: logout.php");
     exit();
 }
 
-// Handle form submission
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user->name = $_POST['name'] ?? '';
     $user->email = $_POST['email'] ?? '';
@@ -32,7 +28,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user->age = $_POST['age'] ?? 0;
     $user->last_donation_date = $_POST['last_donation_date'] ?? null;
     
-    // Handle file upload
     if(isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
         $allowed = ['jpg', 'jpeg', 'png', 'gif'];
         $filename = $_FILES['photo']['name'];
@@ -43,7 +38,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $upload_path = 'uploads/' . $photo_name;
             
             if(move_uploaded_file($_FILES['photo']['tmp_name'], $upload_path)) {
-                // Delete old photo if not default
                 if($user->photo != 'default-avatar.jpg' && file_exists('uploads/' . $user->photo)) {
                     unlink('uploads/' . $user->photo);
                 }
@@ -52,10 +46,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
     
-    // Update user
     if($user->update()) {
         $success = "Profile updated successfully!";
-        // Update session
         $_SESSION['name'] = $user->name;
         $_SESSION['photo'] = $user->photo;
     } else {
@@ -176,7 +168,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Preview image before upload
         $('#photo').change(function() {
             const file = this.files[0];
             if (file) {

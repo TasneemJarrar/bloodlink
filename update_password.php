@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// Check if user is admin
 if(!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     header("Location: login.php");
     exit();
@@ -17,7 +15,6 @@ $user = new User($db);
 $success = "";
 $error = "";
 
-// Get user ID from URL
 $user_id = $_GET['id'] ?? 0;
 $user->id = $user_id;
 
@@ -27,24 +24,23 @@ if(!$user->readOne()) {
     exit();
 }
 
-// Handle form submission
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $new_password = $_POST['new_password'] ?? '';
     $confirm_password = $_POST['confirm_password'] ?? '';
     
     if(empty($new_password)) {
         $error = "Password cannot be empty!";
-    } elseif(strlen($new_password) < 6) {
-        $error = "Password must be at least 6 characters!";
+    } elseif(strlen($new_password) < 6 && strlen($new_password) > 255) {
+        $error = "Password must be at least 6 characters";
     } elseif($new_password !== $confirm_password) {
-        $error = "Passwords do not match!";
+        $error = "Passwords do not match";
     } else {
         if($user->updatePassword($new_password)) {
             $_SESSION['success'] = "Password updated successfully for " . $user->name;
             header("Location: admin_dashboard.php");
             exit();
         } else {
-            $error = "Failed to update password!";
+            $error = "Failed to update password";
         }
     }
 }

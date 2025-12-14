@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// If already logged in, redirect
 if(isset($_SESSION['user_id'])) {
     if($_SESSION['role'] == 'admin') {
         header("Location: admin_dashboard.php");
@@ -10,38 +8,31 @@ if(isset($_SESSION['user_id'])) {
     }
     exit();
 }
-
 require_once 'config/Database.php';
 require_once 'classes/User.php';
-
 $error = "";
 
-// Handle login form submission
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = isset($_POST['email']) ? trim($_POST['email']) : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-    // Basic server-side validation
     if ($email === '' || $password === '') {
-        $error = "Please fill in all fields!";
+        $error = "Please fill in all fields";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 255) {
-        $error = "Please enter a valid email address.";
+        $error = "Please enter a valid email address";
     } elseif (strlen($password) < 6 || strlen($password) > 255) {
-        $error = "Please enter a valid password.";
+        $error = "Please enter a valid password";
     } else {
         $database = new Database();
         $db = $database->getConnection();
         $user = new User($db);
 
         if($user->login($email, $password)) {
-            // Set session variables
             $_SESSION['user_id'] = $user->id;
             $_SESSION['name'] = $user->name;
             $_SESSION['email'] = $user->email;
             $_SESSION['role'] = $user->role;
             $_SESSION['photo'] = $user->photo;
-
-            // Redirect based on role
             if($user->role == 'admin') {
                 header("Location: admin_dashboard.php");
             } else {
